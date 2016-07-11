@@ -24,18 +24,14 @@ controller.setupWebserver(process.env.PORT || 3001, (err, webserver) => {
 });
 
 // example hello response
-  controller.hears(['hello', 'hi', 'howdy'], ['direct_message', 'direct_mention', 'mention'], (bot, message) => {
-    bot.api.users.info({ user: message.user }, (err, res) => {
+controller.hears(['hello', 'hi', 'howdy'], ['direct_message', 'direct_mention', 'mention'], (bot, message) => {
+  bot.api.users.info({ user: message.user }, (err, res) => {
     if (res) {
       bot.reply(message, `Hello, ${res.user.name}!`);
     } else {
       bot.reply(message, 'Hello there!');
     }
   });
-  controller.on('user_typing', (bot, message) => {
-    bot.reply(message, 'stop typing!');
-  });
-  
 });
 
 
