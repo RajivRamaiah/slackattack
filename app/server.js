@@ -1,4 +1,3 @@
-// example bot
 import botkit from 'botkit';
 
 // botkit controller
@@ -24,15 +23,15 @@ controller.setupWebserver(process.env.PORT || 3001, (err, webserver) => {
 });
 
 // example hello response
-controller.hears(['hello', 'hi', 'howdy'], ['direct_message', 'direct_mention', 'mention'], (bot, message) => {
+controller.hears(['hello', 'hi', 'howdy', 'hey'], ['message_received', 'direct_message', 'direct_mention', 'mention'], (bot, message) => {
   bot.api.users.info({ user: message.user }, (err, res) => {
     if (res) {
       bot.reply(message, `Hello, ${res.user.name}!`);
+      bot.reply(message,'I heard you mention me!');
     } else {
       bot.reply(message, 'Hello there!');
     }
   });
 });
-
 
 console.log('starting bot');
