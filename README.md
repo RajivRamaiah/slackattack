@@ -6,7 +6,7 @@ This is a screenshot of a sample conversation with my bot displaying how help wo
 ![Alt text](images/FeedMe.jpg "Optional Title")
 
 This is a screenshot of my bot waking up:
-![Alt text](images/WakeUp.jpg "Optional Title")
+![Alt text](images/Wake.jpg "Optional Title")
 
 This is a screenshot of my bot responding to Hi!:
 ![Alt text](images/Hello.jpg "Optional Title")
