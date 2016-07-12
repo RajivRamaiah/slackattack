@@ -33,7 +33,7 @@ controller.setupWebserver(process.env.PORT || 3001, (err, webserver) => {
 });
 
 controller.on('outgoing_webhook', (bot, message) => {
-  bot.replyPublic(message, 'Im awake, calm down! http://giphy.com/gifs/television-frustrated-seinfeld-10o3Um2U3wa4DK');
+  bot.replyPublic(message, 'Im awake, calm down! http://giphy.com/gifs/frustrated-seinfeld-break-QmaT00aeYYOzu');
 });
 
 // example hello response
