@@ -34,19 +34,6 @@ controller.setupWebserver(process.env.PORT || 3001, (err, webserver) => {
 
 controller.on('outgoing_webhook', (bot, message) => {
   bot.replyPublic(message, 'Im awake, calm down! http://giphy.com/gifs/frustrated-seinfeld-break-QmaT00aeYYOzu');
-
-  var reply_with_attachments = {
-  'username': 'rajiv-bot',
-  'title': 'Im awake, calm down!',
-  'attachments': [
-  {
-    'image_url': `http://giphy.com/gifs/frustrated-seinfeld-break-QmaT00aeYYOzu`,
-    'color': '#7AD1A7'
-  }
-  ],
-  }
-
-  bot.replyPublic(message, reply_with_attachments);
 });
 
 //respond to hello with name if possible
