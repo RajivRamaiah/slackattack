@@ -39,9 +39,8 @@ controller.on('outgoing_webhook', (bot, message) => {
   'text': 'Here is what I recommend you try!',
   'attachments': [
   {
-    'title': `${data.businesses[0].name}, Rating: ${data.businesses[0].rating}`,
-    'image_url': `${data.businesses[0].image_url}`,
-    'text':  `${data.businesses[0].snippet_text} ${data.businesses[0].url}`,
+    'title': `I'm Awake!, Calm Down!!!`,
+    'image_url': `http://giphy.com/gifs/television-frustrated-seinfeld-10o3Um2U3wa4DK`,
     'color': '#7AD1A7'
   }
   ],
@@ -49,7 +48,7 @@ controller.on('outgoing_webhook', (bot, message) => {
   }
 
   bot.reply(message, reply_with_attachments);
-  
+
 });
 
 // example hello response
