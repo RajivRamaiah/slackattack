@@ -36,7 +36,7 @@ controller.on('outgoing_webhook', (bot, message) => {
   bot.replyPublic(message, 'Im awake, calm down! http://giphy.com/gifs/frustrated-seinfeld-break-QmaT00aeYYOzu');
 });
 
-// example hello response
+//respond to hello with name if possible
 controller.hears(['hello', 'hi', 'howdy', 'hey'], ['direct_message', 'direct_mention', 'mention'], (bot, message) => {
   bot.api.users.info({ user: message.user }, (err, res) => {
     if (res) {
@@ -46,6 +46,14 @@ controller.hears(['hello', 'hi', 'howdy', 'hey'], ['direct_message', 'direct_men
     }
   });
 });
+
+//respond to unknown messages
+//the regex was modified from the top answer http://stackoverflow.com/questions/116819/regular-expression-to-exclude-set-of-keywords
+controller.hears(['^(?:(?!help|feed me!).)*$\r?\n?'], ['direct_message', 'direct_mention', 'mention'], (bot, message) => {
+  bot.reply(message, 'I\'m sorry I didn\'t get that...  If you need help ask me `help` for more information!');
+});
+
+
 
 //Food query
 // example hello response
