@@ -33,11 +33,11 @@ controller.setupWebserver(process.env.PORT || 3001, (err, webserver) => {
 });
 
 controller.on('outgoing_webhook', (bot, message) => {
-  // bot.replyPublic(message, 'Im awake, calm down! http://giphy.com/gifs/frustrated-seinfeld-break-QmaT00aeYYOzu');
+  bot.replyPublic(message, 'Im awake, calm down! http://giphy.com/gifs/frustrated-seinfeld-break-QmaT00aeYYOzu');
 
   var reply_with_attachments = {
-  'username': 'rajiv-bot ',
-  'title': 'Im awale, calm down!',
+  'username': 'rajiv-bot',
+  'title': 'Im awake, calm down!',
   'attachments': [
   {
     'image_url': `http://giphy.com/gifs/frustrated-seinfeld-break-QmaT00aeYYOzu`,
@@ -66,8 +66,6 @@ controller.hears(['hello', 'hi', 'howdy', 'hey'], ['direct_message', 'direct_men
 controller.hears(['^(?:(?!help|feed me!).)*$\r?\n?'], ['direct_message', 'direct_mention', 'mention'], (bot, message) => {
   bot.reply(message, 'I\'m sorry I didn\'t get that...  If you need help ask me `help` for more information!');
 });
-
-
 
 //Food query
 // example hello response
