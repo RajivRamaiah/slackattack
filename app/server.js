@@ -130,6 +130,7 @@ controller.hears(['Feed me!'], ['direct_message', 'direct_mention', 'mention'], 
 
     });
   }
+  
   bot.startConversation(message, giveInstructions);
 });
 
