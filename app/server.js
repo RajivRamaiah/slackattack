@@ -44,7 +44,6 @@ controller.on('outgoing_webhook', (bot, message) => {
     'color': '#7AD1A7'
   }
   ],
-  'icon_url': `${data.businesses[0].image_url}`
   }
 
   bot.reply(message, reply_with_attachments);
