@@ -33,7 +33,23 @@ controller.setupWebserver(process.env.PORT || 3001, (err, webserver) => {
 });
 
 controller.on('outgoing_webhook', (bot, message) => {
-  bot.replyPublic(message, 'yeah yeah');
+
+  var reply_with_attachments = {
+  'username': 'rajiv-bot ',
+  'text': 'Here is what I recommend you try!',
+  'attachments': [
+  {
+    'title': `${data.businesses[0].name}, Rating: ${data.businesses[0].rating}`,
+    'image_url': `${data.businesses[0].image_url}`,
+    'text':  `${data.businesses[0].snippet_text} ${data.businesses[0].url}`,
+    'color': '#7AD1A7'
+  }
+  ],
+  'icon_url': `${data.businesses[0].image_url}`
+  }
+
+  bot.reply(message, reply_with_attachments);
+  
 });
 
 // example hello response
