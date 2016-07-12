@@ -1,3 +1,8 @@
+//Sources Used:
+//  Botkit: https://github.com/howdyai/botkit
+//  Converstion Source: https://github.com/howdyai/botkit/blob/master/examples/convo_bot.js
+//  REGEX Source: http://stackoverflow.com/questions/116819/regular-expression-to-exclude-set-of-keywords
+
 import botkit from 'botkit';
 import Yelp from 'yelp'
 
@@ -54,8 +59,7 @@ controller.hears(['^(?:(?!help|feed me!).)*$\r?\n?'], ['direct_message', 'direct
 });
 
 //Food query
-// example hello response
-//found code for the utterances and general info on botkit from https://github.com/dado3212/slackattack/blob/master/app/server.js
+//found code for the utterances and general info on botkit from https://github.com/howdyai/botkit/blob/master/examples/convo_bot.js
 controller.hears(['Feed me!'], ['direct_message', 'direct_mention', 'mention'], (bot, message) => {
   const giveInstructions = (response, convo) => {
     convo.ask('Would you like to find a place to eat?',[
@@ -86,6 +90,7 @@ controller.hears(['Feed me!'], ['direct_message', 'direct_mention', 'mention'], 
     ]);
   }
 
+  //ask users what type of food they want
   const askForFoodType = (response, convo) => {
     convo.ask('What type of food would you like to eat?', (response, convo) => {
       convo.say('Awesome!');
