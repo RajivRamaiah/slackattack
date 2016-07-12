@@ -1,7 +1,6 @@
 import botkit from 'botkit';
 import Yelp from 'yelp'
 
-
 // botkit controller
 const controller = botkit.slackbot({
   debug: false,
@@ -32,6 +31,7 @@ controller.setupWebserver(process.env.PORT || 3001, (err, webserver) => {
   });
 });
 
+//set up wake up behavior
 controller.on('outgoing_webhook', (bot, message) => {
   bot.replyPublic(message, 'Im awake, calm down! http://giphy.com/gifs/reaction-seinfeld-kramer-ie4fEHT4krdDO');
 });
@@ -58,9 +58,9 @@ controller.hears(['^(?:(?!help|feed me!).)*$\r?\n?'], ['direct_message', 'direct
 
 //Food query
 // example hello response
+//found code for the utterances and general info on botkit from https://github.com/dado3212/slackattack/blob/master/app/server.js
 controller.hears(['Feed me!'], ['direct_message', 'direct_mention', 'mention'], (bot, message) => {
 
-  //found code for the utterances and general info on botkit from https://github.com/dado3212/slackattack/blob/master/app/server.js
   const giveInstructions = (response, convo) => {
     convo.ask('Would you like to find a place to eat?',[
       {
@@ -75,14 +75,13 @@ controller.hears(['Feed me!'], ['direct_message', 'direct_mention', 'mention'], 
         pattern: bot.utterances.no,
         callback: function(response,convo) {
           convo.say('Perhaps later.');
-          // do something else...
           convo.next();
         }
       },
       {
         default: true,
         callback: function(response,convo) {
-          // just repeat the question
+          //repeat the question
           convo.say('I did not get that');
           convo.repeat();
           convo.next();
@@ -99,6 +98,7 @@ controller.hears(['Feed me!'], ['direct_message', 'direct_mention', 'mention'], 
     });
   }
 
+  //takes in the food string passed in from askForFoodType
   const askForLocation = (response, convo, food) => {
     convo.ask('What city and state in the US are you located in?', (response, convo) => {
       convo.say('Alright! Let me get your best restaurant result!');
@@ -126,7 +126,9 @@ controller.hears(['Feed me!'], ['direct_message', 'direct_mention', 'mention'], 
         bot.reply(message, reply_with_attachments);
         console.log(data);
       })
+
       .catch(err => {
+        //check error JSON
         if (JSON.parse(err.data).error.id === 'UNAVAILABLE_FOR_LOCATION') {
           convo.say('That food type is not available in that location, please try again!');
           convo.next();
@@ -136,10 +138,8 @@ controller.hears(['Feed me!'], ['direct_message', 'direct_mention', 'mention'], 
           convo.next();
         }
       });
-
     });
   }
-
   bot.startConversation(message, giveInstructions);
 });
 
