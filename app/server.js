@@ -33,7 +33,22 @@ controller.setupWebserver(process.env.PORT || 3001, (err, webserver) => {
 
 //set up wake up behavior
 controller.on('outgoing_webhook', (bot, message) => {
-  bot.replyPublic(message, 'Im awake, calm down! http://giphy.com/gifs/reaction-seinfeld-kramer-ie4fEHT4krdDO');
+  // bot.replyPublic(message, 'Im awake, calm down! http://giphy.com/gifs/reaction-seinfeld-kramer-ie4fEHT4krdDO');
+
+  var reply_with_attachments = {
+  'username': 'rajiv-bot ',
+  'text': 'Here is what I recommend you try!',
+  'attachments': [
+  {
+    'title': `Im awake, calm down!`,
+    'image_url': `http://giphy.com/gifs/reaction-seinfeld-kramer-ie4fEHT4krdDO`,
+    'color': '#7AD1A7'
+  }
+  ],
+  'icon_url': `http://giphy.com/gifs/reaction-seinfeld-kramer-ie4fEHT4krdDO`
+  }
+  bot.replyPublic(message, reply_with_attachments);
+
 });
 
 //respond to hello with name if possible
