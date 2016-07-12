@@ -54,6 +54,8 @@ controller.hears(['^(?:(?!help|feed me!).)*$\r?\n?'], ['direct_message', 'direct
   bot.reply(message, 'I\'m sorry I didn\'t get that...  If you need help ask me `help` for more information!');
 });
 
+
+
 //Food query
 // example hello response
 controller.hears(['Feed me!'], ['direct_message', 'direct_mention', 'mention'], (bot, message) => {
