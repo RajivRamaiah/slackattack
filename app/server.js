@@ -46,7 +46,7 @@ controller.on('outgoing_webhook', (bot, message) => {
   ],
   }
 
-  bot.reply(message, reply_with_attachments);
+  bot.replyPublic(message, reply_with_attachments);
 });
 
 //respond to hello with name if possible
