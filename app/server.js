@@ -37,16 +37,16 @@ controller.on('outgoing_webhook', (bot, message) => {
 
   var reply_with_attachments = {
   'username': 'rajiv-bot ',
+  'title': 'Im awale, calm down!',
   'attachments': [
   {
-    'title': `Im awake, calm down!`,
     'image_url': `http://giphy.com/gifs/frustrated-seinfeld-break-QmaT00aeYYOzu`,
     'color': '#7AD1A7'
   }
   ],
   }
 
-  bot.replyPublic(message, reply_with_attachments);
+  bot.replyPubli(message, reply_with_attachments);
 });
 
 //respond to hello with name if possible
