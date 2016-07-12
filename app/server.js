@@ -32,8 +32,8 @@ controller.setupWebserver(process.env.PORT || 3001, (err, webserver) => {
   });
 });
 
-controller.on('rajiv-bot', (bot, message) => {
-  bot.replyPublic(message, 'im awake');
+controller.on('outgoing_webhook', (bot, message) => {
+  bot.replyPublic(message, 'yeah yeah');
 });
 
 // example hello response
@@ -130,7 +130,7 @@ controller.hears(['Feed me!'], ['direct_message', 'direct_mention', 'mention'], 
 
     });
   }
-  
+
   bot.startConversation(message, giveInstructions);
 });
 
