@@ -33,7 +33,7 @@ controller.setupWebserver(process.env.PORT || 3001, (err, webserver) => {
 });
 
 controller.on('rajiv-bot', (bot, message) => {
-  bot.replyPublic(message, 'yeah yeah');
+  bot.replyPublic(message, 'im awake');
 });
 
 // example hello response
