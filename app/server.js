@@ -47,6 +47,7 @@ controller.hears(['hello', 'hi', 'howdy', 'hey'], ['direct_message', 'direct_men
   });
 });
 
+
 //respond to unknown messages
 //the regex was modified from the top answer http://stackoverflow.com/questions/116819/regular-expression-to-exclude-set-of-keywords
 controller.hears(['^(?:(?!help|feed me!).)*$\r?\n?'], ['direct_message', 'direct_mention', 'mention'], (bot, message) => {
