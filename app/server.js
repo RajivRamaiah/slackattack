@@ -47,20 +47,16 @@ controller.hears(['hello', 'hi', 'howdy', 'hey'], ['direct_message', 'direct_men
   });
 });
 
-
 //respond to unknown messages
 //the regex was modified from the top answer http://stackoverflow.com/questions/116819/regular-expression-to-exclude-set-of-keywords
 controller.hears(['^(?:(?!help|feed me!).)*$\r?\n?'], ['direct_message', 'direct_mention', 'mention'], (bot, message) => {
   bot.reply(message, 'I\'m sorry I didn\'t get that...  If you need help ask me `help` for more information!');
 });
 
-
-
 //Food query
 // example hello response
 //found code for the utterances and general info on botkit from https://github.com/dado3212/slackattack/blob/master/app/server.js
 controller.hears(['Feed me!'], ['direct_message', 'direct_mention', 'mention'], (bot, message) => {
-
   const giveInstructions = (response, convo) => {
     convo.ask('Would you like to find a place to eat?',[
       {
@@ -97,13 +93,11 @@ controller.hears(['Feed me!'], ['direct_message', 'direct_mention', 'mention'], 
       convo.next();
     });
   }
-
   //takes in the food string passed in from askForFoodType
   const askForLocation = (response, convo, food) => {
     convo.ask('What city and state in the US are you located in?', (response, convo) => {
       convo.say('Alright! Let me get your best restaurant result!');
       convo.next();
-
 
       //pass in the parrameters to yelp to search for by highest rating, #2
       yelp.search({ term: food, location: response.text})
@@ -122,7 +116,6 @@ controller.hears(['Feed me!'], ['direct_message', 'direct_mention', 'mention'], 
         ],
         'icon_url': `${data.businesses[0].image_url}`
         }
-
         bot.reply(message, reply_with_attachments);
         console.log(data);
       })
